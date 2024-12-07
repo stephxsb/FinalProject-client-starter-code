@@ -7,6 +7,8 @@ It constructs a React component to display the new student page.
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from "react";
+
 
 // Create styling for the input form
 const useStyles = makeStyles( () => ({
@@ -34,9 +36,42 @@ const useStyles = makeStyles( () => ({
   },
 }));
 
-const NewStudentView = (props) => {
-  const {handleChange, handleSubmit } = props;
+const NewStudentView = ({ handleChange, handleSubmit }) => {
   const classes = useStyles();
+
+  // State for form validation
+  const [errors, setErrors] = useState({});
+
+  // Validation logic
+  const validate = (field, value) => {
+    switch (field) {
+      case 'firstname':
+      case 'lastname':
+        if (!value) return 'This field is required.';
+        break;
+      case 'email':
+        if (!/\S+@\S+\.\S+/.test(value)) return 'Invalid email format.';
+        break;
+      case 'gpa':
+        if (value && (isNaN(value) || value < 0 || value > 4))
+          return 'GPA must be a number between 0.0 and 4.0.';
+        break;
+      default:
+        return '';
+    }
+  };
+
+  // On change handler with validation
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    // Validate and update errors
+    const error = validate(name, value);
+    setErrors({ ...errors, [name]: error });
+
+    // Call parent handleChange
+    handleChange(e);
+  };
 
   // Render a New Student view with an input form
   return (
@@ -46,36 +81,55 @@ const NewStudentView = (props) => {
       <div className={classes.root}>
         <div className={classes.formContainer}>
           <div className={classes.formTitle}>
-            <Typography style={{fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e'}}>
+            <Typography style={{ fontWeight: 'bold', fontFamily: 'Courier, sans-serif', fontSize: '20px', color: '#11153e' }}>
               Add a Student
             </Typography>
           </div>
-          <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
-            <label style= {{color:'#11153e', fontWeight: 'bold'}}>First Name: </label>
-            <input type="text" name="firstname" onChange ={(e) => handleChange(e)} />
-            <br/>
-            <br/>
+          <form style={{ textAlign: 'center' }} onSubmit={(e) => handleSubmit(e)}>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>First Name: </label>
+            <input type="text" name="firstname" onChange={handleInputChange} />
+            {errors.firstname && <div className={classes.errorMessage}>{errors.firstname}</div>}
+            <br />
+            <br />
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Last Name: </label>
-            <input type="text" name="lastname" onChange={(e) => handleChange(e)} />
-            <br/>
-            <br/>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Last Name: </label>
+            <input type="text" name="lastname" onChange={handleInputChange} />
+            {errors.lastname && <div className={classes.errorMessage}>{errors.lastname}</div>}
+            <br />
+            <br />
 
-            <label style={{color:'#11153e', fontWeight: 'bold'}}>Campus Id: </label>
-            <input type="text" name="campusId" onChange={(e) => handleChange(e)} />
-            <br/>
-            <br/>
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Campus Id: </label>
+            <input type="text" name="campusId" onChange={handleInputChange} />
+            <br />
+            <br />
 
-            <Button variant="contained" color="primary" type="submit">
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Email: </label>
+            <input type="text" name="email" onChange={handleInputChange} />
+            {errors.email && <div className={classes.errorMessage}>{errors.email}</div>}
+            <br />
+            <br />
+
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Image URL: </label>
+            <input type="text" name="imageUrl" onChange={handleInputChange} />
+            <br />
+            <br />
+
+            <label style={{ color: '#11153e', fontWeight: 'bold' }}>GPA: </label>
+            <input type="text" name="gpa" onChange={handleInputChange} />
+            {errors.gpa && <div className={classes.errorMessage}>{errors.gpa}</div>}
+            <br />
+            <br />
+
+            <Button variant="contained" color="primary" type="submit" disabled={Object.values(errors).some((error) => error)}>
               Submit
             </Button>
-            <br/>
-            <br/>
+            <br />
+            <br />
           </form>
-          </div>
+        </div>
       </div>
     </div>    
-  )
-}
+  );
+};
 
 export default NewStudentView;

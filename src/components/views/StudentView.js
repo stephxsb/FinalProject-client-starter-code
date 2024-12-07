@@ -27,8 +27,15 @@ const StudentView = (props) => {
           Delete Student
         </button>
       </Link>
+      <Link to={`/student/${student.id}/edit`}>
+        <button>Edit Student</button>
+      </Link>
+      
+      
+
     </div>
   );
 };
 
 export default StudentView;
+

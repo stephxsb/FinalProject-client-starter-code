@@ -21,6 +21,8 @@ class NewStudentContainer extends Component {
       firstname: "", 
       lastname: "", 
       campusId: null, 
+      imageURL: "", // Optional, can use default from backend
+      gpa: null, // Optional
       redirect: false, 
       redirectId: null
     };
@@ -40,7 +42,10 @@ class NewStudentContainer extends Component {
     let student = {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
-        campusId: this.state.campusId
+        campusId: this.state.campusId,
+        email: this.state.email, // Add email
+        imageURL: this.state.imageURL || undefined, // Optional; use default if blank
+        gpa: this.state.gpa ? parseFloat(this.state.gpa) : null, // Optional; convert to float
     };
     
     // Add new student in back-end database
@@ -50,7 +55,9 @@ class NewStudentContainer extends Component {
     this.setState({
       firstname: "", 
       lastname: "", 
-      campusId: null, 
+      campusId: null,
+      imageURL: "", // Optional, can use default from backend
+      gpa: null, // Optional
       redirect: true, 
       redirectId: newStudent.id
     });
