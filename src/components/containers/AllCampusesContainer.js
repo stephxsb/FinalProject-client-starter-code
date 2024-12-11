@@ -9,7 +9,7 @@ import Header from './Header';
 import { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchAllCampusesThunk, deleteCampusThunk} from "../../store/thunks";
+import { fetchAllCampusesThunk, deleteCampusThunk, addCampusThunk} from "../../store/thunks";
 import { AllCampusesView } from "../views";
 
 class AllCampusesContainer extends Component {
@@ -48,7 +48,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchAllCampuses: () => dispatch(fetchAllCampusesThunk()),
     deleteCampus: (campusId) => dispatch(deleteCampusThunk(campusId)),
-    addCampus: (campus) => dispatch(deleteCampusThunk(campus)),
+    addCampus: (campus) => dispatch(addCampusThunk(campus)),
   };
 };
 
