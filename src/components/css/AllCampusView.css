@@ -1,0 +1,17 @@
+.new-campus {
+    text-decoration: none;
+  width: 150px; 
+  height: 70px;
+  border: 2px solid #fff;
+  border-radius: 30px; 
+  background-color: #a90909; 
+  color: #fff; 
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 7px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, background-color 0.2s ease;
+}

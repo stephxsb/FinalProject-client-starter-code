@@ -4,8 +4,10 @@ AllCampusesView.js
 The Views component is responsible for rendering web page with data provided by the corresponding Container component.
 It constructs a React component to display all campuses.
 ================================================== */
+import React from 'react';
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "../css/AllCampusView.css";
 
 const AllCampusesView = (props) => {
   // If there is no campus, display a message.
@@ -31,7 +33,7 @@ const AllCampusesView = (props) => {
       ))}
       <br/>
       <Link to={`/`}>
-        <button>Add New Campus</button>
+        <button className="new-campus"> Add New Campus</button>
       </Link>
       <br/><br/>
     </div>
