@@ -6,11 +6,24 @@ img{
 }
 
 .container{
-	background-color: aliceblue;
+	background-color: rgb(255, 255, 255);
 	margin: auto;
   width: 50%;
 	margin-top: 5%;
 	border: 3px solid rgb(0, 2, 66);
   padding-top: 15px;
 	padding-bottom: 15px;
+}
+
+.student-buttons{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.student-buttons button{
+	border: none;
+	color: white;
+	background-color: black;
+  padding: 10px;
+  text-align: center;
 }

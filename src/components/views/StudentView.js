@@ -22,17 +22,17 @@ const StudentView = (props) => {
       </h3>
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
-      <Link to={'/students'}>
-        <button onClick={() => deleteStudent(student.id)}>
-          Delete Student
-        </button>
-      </Link>
-      <Link to={`/student/${student.id}/edit`}>
-        <button>Edit Student</button>
-      </Link>
-      
-      
 
+      <div className="student-buttons">
+        <Link to={"/students"}>
+          <button onClick={() => deleteStudent(student.id)}>
+            Delete Student
+          </button>
+        </Link>
+        <Link to={`/student/${student.id}/edit`}>
+          <button>Edit Student</button>
+        </Link>
+      </div>
     </div>
   );
 };
