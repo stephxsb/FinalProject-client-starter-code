@@ -10,6 +10,7 @@ import {
   AllCampusesContainer,
   AllStudentsContainer,
   NewStudentContainer,
+  EditStudentContainer,
   NewCampusContainer
 } from './components/containers';
 
@@ -27,10 +28,14 @@ const App = () => {
         <Route exact path="/students" component={AllStudentsContainer} />
         <Route exact path="/newstudent" component={NewStudentContainer} />
         <Route exact path="/student/:id" component={StudentContainer} />
+        <Route exact path="/student/:id/edit" component={EditStudentContainer} />
         <Route exact path="/newcampus" component={NewCampusContainer} />
+
       </Switch>        
     </div>
   );
 }
 
 export default App;
+
+//        
