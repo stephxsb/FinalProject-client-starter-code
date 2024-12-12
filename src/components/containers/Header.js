@@ -10,6 +10,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUniversity } from '@fortawesome/free-solid-svg-icons'; 
 
 import { Link } from 'react-router-dom';
 
@@ -24,11 +26,18 @@ const useStyles = makeStyles(theme => ({
     fontType: 'bold',
     fontFamily: 'sans-serif', 
     fontSize: '35px', 
-    color: 'darkblue'
+    color: 'black',
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
   },
   appBar:{
-    backgroundColor: '#fcb6bb',
+    backgroundColor: '#FAFAFA',
     shadows: ['none'],
+  },
+  toolbar: {
+    minHeight: '150px', // Adjust this value to increase/decrease height
   },
   greeting:{
     display: 'flex',
@@ -39,7 +48,19 @@ const useStyles = makeStyles(theme => ({
   },
   links:{
     textDecoration: 'none',
-  }
+  },
+  navbarButton: {
+    marginRight: '10px',
+    fontWeight: 'semi-bold',
+    backgroundColor: '#000000',
+    color: '#FFFFFF',
+    border: 'none',
+    '&:hover': {
+      backgroundColor: '#333333', 
+      borderColor: '#90CAF9', 
+      color: '#1976D2', 
+    },
+  },
 }));
 
 // Header component, displayed on every page
@@ -51,23 +72,27 @@ const Header = () => {
       <AppBar position="static" elevation={0} className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" className={classes.title} color="inherit" >
+          <FontAwesomeIcon icon={faUniversity} />
             Campus Management System
           </Typography>
 
           <Link className={classes.links} to={'/'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+            <Button variant="outlined" color="primary" className={classes.navbarButton}>
               Home
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/campuses'} >
-            <Button variant="contained" color="primary" style={{marginRight: '10px'}}>
+            <Button variant="outlined" color="primary"  className={classes.navbarButton}>
               All Campuses
             </Button>
           </Link>
 
           <Link className={classes.links} to={'/students'} >
-            <Button variant="contained" color="primary">
+          <Button
+    variant="outlined"
+    color="primary"
+    className={classes.navbarButton}>
               All Students
             </Button>
           </Link>
