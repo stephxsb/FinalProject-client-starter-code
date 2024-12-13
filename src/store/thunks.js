@@ -19,7 +19,49 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {  // The THUNK
     console.error(err);
   }
 };
+// export const fetchAllCampusesThunk = () => async (dispatch) => {
+//   try {
+//     const res = await axios.get(`/api/campuses`);
+//     console.log("API response for campuses:", res.data); // Debug log
+//     if (Array.isArray(res.data)) {
+//       dispatch(ac.fetchAllCampuses(res.data)); // Dispatch correct data
+//     } else {
+//       console.error("API did not return an array:", res.data);
+//     }
+//   } catch (err) {
+//     console.error("Error fetching campuses:", err);
+//   }
+// };
 
+
+//Delete Campus
+//THUNK CREATOR:
+export const deleteCampusThunk = campusId => async dispatch => {  // The THUNK
+  try {
+    // API "delete" call to delete campus (based on "id") from database
+    await axios.delete(`/api/campuses/${campusId}`);  
+    // Delete successful so change state with dispatch
+    dispatch(ac.deleteCampus(campusId));
+    // dispatch(fetchAllCampusesThunk());
+    console.log("HEREE")
+  } catch(err) {
+    console.error(err);
+  }
+};
+//Add Campus
+//THUNK CREATOR:
+export const addCampusThunk = (campus) => async (dispatch) => {  // The THUNK
+  try {
+    // API "post" call to add "student" object's data to database
+    let res = await axios.post(`/api/campuses`, campus);  
+    // Call Action Creator to return Action object (type + payload with new students data)
+    // Then dispatch the Action object to Reducer to update state 
+    dispatch(ac.addCampus(res.data));
+    return res.data;
+  } catch(err) {
+    console.error(err);
+  }
+};
 // Single Campus
 // THUNK CREATOR:
 export const fetchCampusThunk = (id) => async (dispatch) => {  // The THUNK
