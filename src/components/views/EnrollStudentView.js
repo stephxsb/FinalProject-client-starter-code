@@ -63,7 +63,7 @@ const EnrollStudentView = (props) => {
     const formData = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
-      campusId: presetCampusId, // Use the preset campusId here
+      campusId: presetCampusId, 
       email: e.target.email.value,
       imageURL: e.target.imageURL.value,
       gpa: e.target.gpa.value,
@@ -75,13 +75,13 @@ const EnrollStudentView = (props) => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      handleSubmit(formData); // Pass the entire formData to handleSubmit
+      handleSubmit(formData); 
     }
   };
 
   return (
     <div>
-      <h1>New Student</h1>
+      <h1>Enroll Student</h1>
       <div className={classes.root}>
         <div className={classes.formContainer}>
           <div className={classes.formTitle}>
@@ -113,8 +113,8 @@ const EnrollStudentView = (props) => {
             <input
               type="text"
               name="campusId"
-              value={presetCampusId} // Preset campusId
-              disabled // Make it uneditable
+              value={presetCampusId} // already set campusID
+              disabled // can't edit
             />
             <br />
             <br />
