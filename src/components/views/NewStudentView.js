@@ -10,7 +10,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
-// Create styling for the input form
 const useStyles = makeStyles(() => ({
   formContainer: {  
     width: '500px',
@@ -49,7 +48,7 @@ const NewStudentView = (props) => {
   const classes = useStyles();
 
 
-  // Validation function
+  // validation function checks if valid input
   const validate = (fields) => {
     let newErrors = {};
     
@@ -68,11 +67,10 @@ const NewStudentView = (props) => {
     return newErrors;
   };
 
-  // Handle form submission
   const onSubmit = (e) => {
     e.preventDefault();
 
-    // Gather field values for validation
+   //gathers field values for validation
     const formData = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
@@ -82,14 +80,14 @@ const NewStudentView = (props) => {
       gpa: e.target.gpa.value,
     };
 
-    // Validate required fields
+  //validates field values
     const validationErrors = validate(formData);
 
     if (Object.keys(validationErrors).length > 0) {
-      // Set errors and prevent submission
+   //if errors no submision
       setErrors(validationErrors);
     } else {
-      // Clear errors and proceed with submission
+          // clear errors- allow submission
       setErrors({});
       handleSubmit(e);
     }
@@ -109,7 +107,7 @@ const NewStudentView = (props) => {
                 color: '#11153e',
               }}
             >
-              Add a Campus
+              Add a Student
             </Typography>
           </div>
           <form style={{ textAlign: 'center' }} onSubmit={onSubmit}>
