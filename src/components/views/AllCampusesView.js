@@ -17,8 +17,8 @@ const AllCampusesView = (props) => {
     return <div>There are no campuses.
       <br></br> <br></br>
       <Link to={`/newcampus`}>
-        <button>Add New Campus</button>
-      </Link>
+        <button className="new-campus"> Add New Campus</button>
+      </Link> 
     </div>;
   }
 
