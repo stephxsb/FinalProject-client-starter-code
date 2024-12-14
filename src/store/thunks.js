@@ -73,7 +73,6 @@ export const editCampusThunk = campus => async dispatch => {  // The THUNK
   }
 };
 
-
 // All Students
 // THUNK CREATOR:
 export const fetchAllStudentsThunk = () => async (dispatch) => {  // The THUNK
@@ -102,6 +101,25 @@ export const addStudentThunk = (student) => async (dispatch) => {  // The THUNK
     console.error(err);
   }
 };
+// export const enrollStudentThunk = (studentData, campusId) => async (dispatch) => {
+//   try {
+//     // Step 1: API "post" call to add the student data to the database
+//     const response = await axios.post(`/api/students`, studentData);  // API call to add student
+//     const student = response.data;  // Assuming API returns student data
+
+//     // Step 2: Dispatch action to store the student in Redux state
+//     dispatch(ac.addStudent(student));  // Action to add student to Redux state
+
+//     // Step 3: Dispatch action to enroll the student in the campus (if needed)
+//     dispatch(ac.enrollStudent(student, campusId));  // Action to enroll student in the campus
+
+//     // Step 4: Return student data for potential use later (e.g., UI or further logic)
+//     return student;
+//   } catch (error) {
+//     console.error('Failed to enroll student:', error);
+//     throw error;  // Propagate the error to handle it in the component
+//   }
+// };
 
 // Delete Student
 // THUNK CREATOR:
