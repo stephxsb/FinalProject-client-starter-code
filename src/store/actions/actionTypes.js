@@ -19,3 +19,7 @@ export const EDIT_STUDENT = "EDIT_STUDENT";
 
 //Single student
 export const FETCH_STUDENT = "FETCH_STUDENT";
+
+// Unenrolling a student 
+export const UNENROLL_STUDENT = "UNENROLL_STUDENT";
+

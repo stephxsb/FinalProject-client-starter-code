@@ -142,3 +142,19 @@ export const fetchStudentThunk = id => async dispatch => {  // The THUNK
     console.error(err);
   }
 };
+
+// Unenrolling a student
+export const unenrollStudentThunk = (studentId) => async (dispatch) => {
+  try {
+    let res = await axios.get(`/api/students/${studentId}`);
+    let student = res.data;
+
+    student.campusId = null;
+
+    let updatedRes = await axios.put(`/api/students/${studentId}`, student);
+
+    dispatch(ac.unenrollStudent(updatedRes.data));
+  } catch (err) {
+    console.error("Failed to unenroll student:", err);
+  }
+};
