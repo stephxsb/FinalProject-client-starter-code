@@ -81,3 +81,11 @@ export const fetchStudent = (student) => {
     payload: student,
   };
 };
+
+// Action Creator for unenrolling a student
+export const unenrollStudent = (student) => {
+  return {
+    type: at.UNENROLL_STUDENT,
+    payload: student,
+  };
+};
