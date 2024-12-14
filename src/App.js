@@ -33,8 +33,7 @@ const App = () => {
         <Route exact path="/student/:id/edit" component={EditStudentContainer} />
         <Route exact path="/newcampus" component={NewCampusContainer} />
         <Route exact path="/campus/:id/edit" component={EditCampusContainer} />
-        <Route exact path="/enrollstudent" component={EnrollStudentContainer} />
-
+        <Route path="/campus/:id/enrollstudent" component={EnrollStudentContainer} />
       </Switch>        
     </div>
   );
