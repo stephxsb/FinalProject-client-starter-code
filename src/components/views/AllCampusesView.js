@@ -46,7 +46,7 @@ const AllCampusesView = (props) => {
         </div>
       ))}
       <br/>
-      <div class= "center">
+      <div className= "center">
       <Link to={`/newcampus`}>
         <button className="new-campus"> Add New Campus</button> 
       </Link>   
