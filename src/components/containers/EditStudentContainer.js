@@ -85,4 +85,3 @@ const mapDispatch = (dispatch) => {
 
 // Export the connected component
 export default connect(mapState, mapDispatch)(EditStudentContainer);
-
