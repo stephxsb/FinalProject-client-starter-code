@@ -28,15 +28,15 @@ const StudentView = (props) => {
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
 
-      <div className="student-buttons">
+      <div className="center">
         {/* Ensure deleteStudent is only called if student.id exists */}
         <Link to="/students">
-          <button onClick={() => deleteStudent(student.id)}>
+          <button onClick={() => deleteStudent(student.id)} className="student-buttons">
             Delete Student
           </button>
         </Link>
         <Link to={`/student/${student.id}/edit`}>
-          <button>Edit Student</button>
+          <button  className="student-buttons">Edit Student</button>
         </Link>
       </div>
     </div>
