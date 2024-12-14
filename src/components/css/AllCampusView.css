@@ -34,5 +34,20 @@ img{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
+  height: 60px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.campus-buttons{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.campus-buttons button{
+	border: none;
+	color: white;
+	background-color: black;
+  padding: 10px;
+  text-align: center;
 }
