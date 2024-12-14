@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import LargeTextField from '../css/LargeTextField';
 const useStyles = makeStyles(() => ({
   formContainer: {  
     width: '500px',
@@ -41,18 +41,18 @@ const EditCampusView = (props) => {
   const [errors, setErrors] = useState({});
   const classes = useStyles();
 
-  // Validation function
+  // validation function
   const validate = (fields) => {
     let newErrors = {};
-    if (!fields.name) newErrors.name = "Name is required.";
+    if (!fields.name) newErrors.name = "Name is required.";  //required name + address
     if (!fields.address) newErrors.address = "Address is required.";
     return newErrors;
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();  //prevents reloading
     const formData = {
-      name: e.target.name.value,
+      name: e.target.name.value,  
       address: e.target.address.value,
       description: e.target.description.value,
       imageURL: e.target.imageURL.value,
@@ -64,7 +64,7 @@ const EditCampusView = (props) => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      handleSubmit(formData);  // Pass form data to container's submit handler
+      handleSubmit(formData);  // passes form data to Edit Campus' container's submit handler
     }
   };
 
@@ -93,8 +93,11 @@ const EditCampusView = (props) => {
           <input type="text" name="address" defaultValue={campus.address} onChange={handleChange} />
           {errors.address && <div className={classes.errorText}>{errors.address}</div>}
           <br />
-          <label>Description: </label>
+          {/* <label>Description: </label>
           <input type="text" name="description" defaultValue={campus.description} onChange={handleChange} />
+          <br /> */}
+             <LargeTextField name="description" defaultValue={campus.description} onChange={handleChange} />
+          <br />
           <br />
           <label>Image URL: </label>
           <input type="text" name="imageURL" defaultValue={campus.imageURL} onChange={handleChange} />

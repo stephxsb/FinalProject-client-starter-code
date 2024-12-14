@@ -8,7 +8,6 @@ export const ADD_CAMPUS = "ADD_CAMPUS";
 //Single campus
 export const FETCH_CAMPUS = "FETCH_CAMPUS";
 export const EDIT_CAMPUS = "EDIT_CAMPUS";
-// export const ENROLL_STUDENT = "ENROLL_STUDENT";
 
 
 //All students
