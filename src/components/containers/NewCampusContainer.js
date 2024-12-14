@@ -14,6 +14,7 @@ class NewCampusContainer extends Component {
       name: "", 
       address: "", 
       description: "", 
+      imageURL: "",
       redirect: false, 
       redirectId: null
     };
@@ -33,7 +34,8 @@ class NewCampusContainer extends Component {
     let campus = {
         name: this.state.name,
         address: this.state.address,
-        description: this.state.description
+        description: this.state.description || undefined,
+        imageURL: this.state.imageURL
     };
     
     // Add new campus in back-end database
@@ -44,6 +46,7 @@ class NewCampusContainer extends Component {
       name: "", 
       address: "", 
       description: "", 
+      imageURL: "",
       redirect: true, 
       redirectId: newCampus.id
     });
@@ -74,7 +77,7 @@ class NewCampusContainer extends Component {
   }
 }
 
-// The following input argument is passed to the "connect" function used by "NewStudentContainer" component to connect to Redux Store.
+// The following input argument is passed to the "connect" function used by "NewCampusContainer" component to connect to Redux Store.
 // The "mapDispatch" argument is used to dispatch Action (Redux Thunk) to Redux Store.
 // The "mapDispatch" calls the specific Thunk to dispatch its action. The "dispatch" is a function of Redux Store.
 const mapDispatch = (dispatch) => {

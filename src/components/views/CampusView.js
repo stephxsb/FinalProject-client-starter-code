@@ -12,8 +12,37 @@ const CampusView = (props) => {
   const { campus, deleteCampus, unenrollStudent } = props;
   
   // Render a single Campus view with list of its students
+  //need if statement
+
+    if (!props.campus.students.length) {
+       return  <div>
+          <img
+         src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
+         alt="Campus"
+         />
+       <h1>{campus.name}</h1>
+      <p>{campus.address}</p>
+      <p>{campus.description}</p> 
+      <p>There are no students.</p>
+    <br></br> <br></br>
+    <Link to={`/campus/${campus.id}/edit`}>
+          <button>Edit Campus</button>
+        </Link>
+        <br></br> <br></br>
+        <Link to={'/campuses'}>
+        <button onClick={() => deleteCampus(campus.id)}>
+          Delete Campus
+        </button>
+      </Link>
+    </div>;
+     }
   return (
     <div>
+    
+    <img
+            src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
+            alt="Campus"
+          />
       <h1>{campus.name}</h1>
       <p>{campus.address}</p>
       <p>{campus.description}</p>
@@ -30,6 +59,10 @@ const CampusView = (props) => {
           </div>
         );
       })}
+<Link to={`/campus/${campus.id}/edit`}>
+          <button>Edit Campus</button>
+        </Link>
+        <br></br> <br></br>
         <Link to={'/campuses'}>
         <button onClick={() => deleteCampus(campus.id)}>
           Delete Campus

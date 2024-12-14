@@ -19,19 +19,6 @@ export const fetchAllCampusesThunk = () => async (dispatch) => {  // The THUNK
     console.error(err);
   }
 };
-// export const fetchAllCampusesThunk = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get(`/api/campuses`);
-//     console.log("API response for campuses:", res.data); // Debug log
-//     if (Array.isArray(res.data)) {
-//       dispatch(ac.fetchAllCampuses(res.data)); // Dispatch correct data
-//     } else {
-//       console.error("API did not return an array:", res.data);
-//     }
-//   } catch (err) {
-//     console.error("Error fetching campuses:", err);
-//   }
-// };
 
 
 //Delete Campus
@@ -73,6 +60,19 @@ export const fetchCampusThunk = (id) => async (dispatch) => {  // The THUNK
     console.error(err);
   }
 };
+// Edit Campus
+// THUNK CREATOR:
+export const editCampusThunk = campus => async dispatch => {  // The THUNK
+  try {
+//update campus based on campusID
+    let updatedCampus = await axios.put(`/api/campuses/${campus.id}`, campus); 
+    // Update successful so change state with dispatch
+    dispatch(ac.editCampus(updatedCampus));
+  } catch(err) {
+    console.error(err);
+  }
+};
+
 
 // All Students
 // THUNK CREATOR:

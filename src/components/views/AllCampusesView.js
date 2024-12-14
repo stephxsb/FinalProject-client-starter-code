@@ -17,8 +17,8 @@ const AllCampusesView = (props) => {
     return <div>There are no campuses.
       <br></br> <br></br>
       <Link to={`/newcampus`}>
-        <button>Add New Campus</button>
-      </Link>
+        <button className="new-campus"> Add New Campus</button>
+      </Link> 
     </div>;
   }
 
@@ -29,6 +29,10 @@ const AllCampusesView = (props) => {
 
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
+          <img
+            src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
+            alt="Campus"
+          />
           <Link to={`/campus/${campus.id}`}>
             <h2>{campus.name}</h2>
           </Link>
@@ -40,9 +44,10 @@ const AllCampusesView = (props) => {
         </div>
       ))}
       <br/>
+
       <Link to={`/newcampus`}>
         <button className="new-campus"> Add New Campus</button>
-      </Link>
+      </Link> 
       <br/><br/>
     </div>
   );
