@@ -16,7 +16,7 @@ class EditCampusContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchCampus(this.props.match.params.id);  // Fetch campus by ID from URL
+    this.props.fetchCampus(this.props.match.params.id);  // fetches campus by ID from URL
   }
 
   handleChange = (event) => {
@@ -34,8 +34,8 @@ class EditCampusContainer extends Component {
       imageURL: formData.imageURL || this.props.campus.imageURL,
     };
 
-    await this.props.editCampus(updatedCampus);  // Dispatch edit action
-    this.props.history.push(`/campus/${updatedCampus.id}`);  // Redirect after update
+    await this.props.editCampus(updatedCampus);  // dispatches edit action
+    this.props.history.push(`/campus/${updatedCampus.id}`);  // redirects after update to campus page
   };
 
   render() {
@@ -49,9 +49,9 @@ class EditCampusContainer extends Component {
       <div>
         <Header />
         <EditCampusView
-          campus={campus}  // Pass current campus data
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          campus={campus}  // passes current campus data
+          handleChange={this.handleChange}  //handles change of input
+          handleSubmit={this.handleSubmit}  //handles submission of input
         />
       </div>
     );
@@ -60,14 +60,14 @@ class EditCampusContainer extends Component {
 
 const mapState = (state) => {
   return {
-    campus: state.campus,  // Get campus data from the store
+    campus: state.campus,  // gets campus data from the store
   };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchCampus: (id) => dispatch(fetchCampusThunk(id)),
-    editCampus: (campus) => dispatch(editCampusThunk(campus)),
+    fetchCampus: (id) => dispatch(fetchCampusThunk(id)),  //fetches campus id
+    editCampus: (campus) => dispatch(editCampusThunk(campus)),   //edits campus
   };
 };
 

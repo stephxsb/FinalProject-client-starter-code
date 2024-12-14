@@ -9,18 +9,16 @@ import "../css/StudentView.css";
 
 const StudentView = (props) => {
   const { student, deleteStudent } = props;
-  console.log(student);
+
   // Render a single Student view
   return (
     <div className="container">
-      <img src={student.imageURL} alt="Default" />
+      <img className= "studentImage" src={student.imageURL} alt="Default" />
       <h1>{student.firstname + " " + student.lastname}</h1>
       <h3>
-        {student.campus ? (
-          <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link>
-        ) : (
-          "Student is not associated with campus"
-        )}
+        {student.campus.name
+          ? student.campus.name
+          : "Student is not associated with campus"}
       </h3>
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>

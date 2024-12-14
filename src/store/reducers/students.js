@@ -22,15 +22,6 @@ const allStudents = (state=[], action) => {  // Empty array as default Initial S
           student.id===action.payload.id ? action.payload : student
         );
       });
-      // case at.ENROLL_STUDENT:
-      //   return {
-      //     ...state,
-      //     students: state.students.map((student) =>
-      //       student.id === action.payload.student.id
-      //         ? { ...student, campusId: action.payload.campusId }  // Enroll the student in the campus
-      //         : student
-      //     ),
-      //   };
     default:
       // If the Reducer doesn't recognize the Action Type, returns the previous (current) State unchanged.
       return state;

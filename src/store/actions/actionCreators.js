@@ -37,12 +37,6 @@ export const editCampus = (campus) => {
     payload: campus,
   };
 };
-// export const enrollStudent = (student, campusId) => {
-//   return {
-//     type: at.ENROLL_STUDENT,
-//     payload: { student, campusId },
-//   };
-// };
 
 //All Students
 export const fetchAllStudents = (students) => {
