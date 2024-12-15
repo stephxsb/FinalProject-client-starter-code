@@ -27,20 +27,21 @@ const CampusView = (props) => {
       <p>{campus.description}</p> 
       <p>There are no students.</p>
     <br></br> <br></br>
-    <Link to={`/campus/${campus.id}/edit`}>
-          <button>Edit Campus</button>
+      <div className= "center">
+<Link to={`/campus/${campus.id}/edit`}>
+          <button  className="campus-buttons">Edit Campus</button>
         </Link>
-        <br></br> <br></br>
+        
         <Link to={'/campuses'}>
-        <button onClick={() => deleteCampus(campus.id)}>
+        <button className="campus-buttons" onClick={() => deleteCampus(campus.id)}>
           Delete Campus
         </button>
       </Link>
-      <br></br> <br></br>
 
-<Link to={`/campus/${campus.id}/enrollstudent`}>
-<button>Add New Student</button>
+      <Link to={`/campus/${campus.id}/enrollstudent`}>
+  <button  className="campus-buttons">Enroll Student</button>
 </Link>
+</div>
     </div>;
      }
   return (
