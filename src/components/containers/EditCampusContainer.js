@@ -28,9 +28,9 @@ class EditCampusContainer extends Component {
   handleSubmit = async (formData) => {
     const updatedCampus = {
       id: this.props.campus.id,
-      name: formData.name || this.props.campus.name,
-      address: formData.address || this.props.campus.address,
-      description: formData.description || this.props.campus.description,
+      name: formData.name,
+      address: formData.address,
+      description: formData.description,
       imageURL: formData.imageURL || this.props.campus.imageURL,
     };
 
