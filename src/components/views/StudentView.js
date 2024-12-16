@@ -22,14 +22,16 @@ const StudentView = (props) => {
 
       <h3>
         {student.campus && student.campus.name
-          ? student.campus.name
+          ? <Link to={`/campus/${student.campus.id}`}>
+          <h2>{student.campus.name}</h2>
+        </Link>
           : "Student is not associated with campus"}
       </h3>
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
 
       <div className="center">
-        {/* Ensure deleteStudent is only called if student.id exists */}
+
         <Link to="/students">
           <button onClick={() => deleteStudent(student.id)} className="student-buttons">
             Delete Student
