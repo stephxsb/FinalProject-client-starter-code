@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchStudentThunk, editStudentThunk } from "../../store/thunks";  // Import the necessary thunks
+import { fetchStudentThunk, editStudentThunk, unenrollStudentThunk } from "../../store/thunks";  // Import the necessary thunks
 import { EditStudentView } from "../views";  // The View component for editing student details
 import Header from "./Header";
+// import { unenrollStudent } from "../../store/actions/actionCreators";
 
 class EditStudentContainer extends Component {
   constructor(props) {
@@ -37,10 +38,14 @@ class EditStudentContainer extends Component {
       firstname: this.state.firstname || this.props.student.firstname,  // Use state value or default to current student data
       lastname: this.state.lastname || this.props.student.lastname,
       email: this.state.email || this.props.student.email,
-      campusId: this.state.campusId || this.props.student.campusId,
+      campusId: this.state.campusId || null,
       imageURL: this.state.imageURL || this.props.student.imageURL,
       gpa: this.state.gpa || this.props.student.gpa,
     };
+    if(updatedStudent.campusId==null)
+      {
+        await this.props.unenrollStudent(this.props.student.id) //for unenrolling
+      }
 
     await this.props.editStudent(updatedStudent);  // Dispatch the action to edit student
     this.props.history.push(`/student/${updatedStudent.id}`);  // Redirect to the student's page after updating
@@ -80,6 +85,7 @@ const mapDispatch = (dispatch) => {
   return {
     fetchStudent: (id) => dispatch(fetchStudentThunk(id)),
     editStudent: (student) => dispatch(editStudentThunk(student)),  // Dispatch the edit action
+    unenrollStudent: (id) => dispatch(unenrollStudentThunk(id)),
   };
 };
 
