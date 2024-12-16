@@ -40,7 +40,7 @@ class EditStudentContainer extends Component {
       email: this.state.email || this.props.student.email,
       campusId: this.state.campusId || null,
       imageURL: this.state.imageURL || this.props.student.imageURL,
-      gpa: this.state.gpa || this.props.student.gpa,
+      gpa: this.state.gpa || null,
     };
     if(updatedStudent.campusId==null)
       {
