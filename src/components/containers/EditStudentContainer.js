@@ -38,14 +38,14 @@ class EditStudentContainer extends Component {
       firstname: this.state.firstname || this.props.student.firstname,  // Use state value or default to current student data
       lastname: this.state.lastname || this.props.student.lastname,
       email: this.state.email || this.props.student.email,
-      campusId: this.state.campusId || null,
+      campusId: this.state.campusId || this.props.campusID,
       imageURL: this.state.imageURL || this.props.student.imageURL,
-      gpa: this.state.gpa || null,
+      gpa: this.state.gpa || this.props.gpa,
     };
-    if(updatedStudent.campusId==null)
-      {
-        await this.props.unenrollStudent(this.props.student.id) //for unenrolling
-      }
+    // if(updatedStudent.campusId==null)
+    //   {
+    //     await this.props.unenrollStudent(this.props.student.id) //for unenrolling
+    //   }
 
     await this.props.editStudent(updatedStudent);  // Dispatch the action to edit student
     this.props.history.push(`/student/${updatedStudent.id}`);  // Redirect to the student's page after updating
