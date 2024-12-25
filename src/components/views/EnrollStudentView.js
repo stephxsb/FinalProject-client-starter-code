@@ -1,3 +1,151 @@
+// import React, { useState, useEffect } from 'react';
+// import Button from '@material-ui/core/Button';
+// import Typography from '@material-ui/core/Typography';
+// import { makeStyles } from '@material-ui/core/styles';
+
+// const useStyles = makeStyles(() => ({
+//   formContainer: {  
+//     width: '500px',
+//     backgroundColor: '#f0f0f5',
+//     borderRadius: '5px',
+//     margin: 'auto',
+//   },
+//   formTitle: {
+//     backgroundColor: '#c5c8d6',
+//     marginBottom: '15px',
+//     textAlign: 'center',
+//     borderRadius: '5px 5px 0px 0px',
+//     padding: '3px',
+//   },
+//   errorText: {
+//     color: 'red',
+//     fontSize: '14px',
+//     marginTop: '-10px',
+//     marginBottom: '10px',
+//     textAlign: 'left',
+//   },
+// }));
+
+// const EditStudentView = (props) => {
+//   const { student, handleChange, handleSubmit } = props;
+//   const [errors, setErrors] = useState({});
+//   const classes = useStyles();
+
+//   // validation function
+//   const validate = (fields) => {
+//     let newErrors = {};
+//     if (!fields.firstname) newErrors.firstname = "First name is required.";
+//     if (!fields.lastname) newErrors.lastname = "Last name is required.";
+//     return newErrors;
+//   };
+
+//   useEffect(() => {
+//     // Initialize form with existing student data
+//     if (student) {
+//       setErrors({});
+//     }
+//   }, [student]);
+
+//   const onSubmit = (e) => {
+//     e.preventDefault();
+
+//     //gathering field values
+//     const formData = {
+//       firstname: e.target.firstname.value,
+//       lastname: e.target.lastname.value,
+//       email: e.target.email.value,
+//       campusId: e.target.campusId.value,
+//       imageURL: e.target.imageURL.value,
+//       gpa: e.target.gpa.value,
+//     };
+
+//     // validate fields
+//     const validationErrors = validate(formData);
+
+//     if (Object.keys(validationErrors).length > 0) {
+//       setErrors(validationErrors);
+//     } else {
+//       setErrors({});
+//       handleSubmit(formData);
+//     }
+//   };
+
+//   return (
+//     <div className={classes.formContainer}>
+//       <div className={classes.formTitle}>
+//         <Typography variant="h5">Edit Student</Typography>
+//       </div>
+//       <form onSubmit={onSubmit}>
+//         <label>First Name:</label>
+//         <input
+//           type="text"
+//           name="firstname"
+//           value={student ? student.firstname : ''}
+//           onChange={handleChange}
+//         />
+//         {errors.firstname && <div className={classes.errorText}>{errors.firstname}</div>}
+//         <br />
+        
+//         <label>Last Name:</label>
+//         <input
+//           type="text"
+//           name="lastname"
+//           value={student ? student.lastname : ''}
+//           onChange={handleChange}
+//         />
+//         {errors.lastname && <div className={classes.errorText}>{errors.lastname}</div>}
+//         <br />
+
+//         <label>Email:</label>
+//         <input
+//           type="email"
+//           name="email"
+//           value={student ? student.email : ''}
+//           onChange={handleChange}
+//         />
+//         <br />
+
+//         <label>Campus ID:</label>
+//         <input
+//           type="text"
+//           name="campusId"
+//           value={student ? student.campusId : ''}
+//           onChange={handleChange}
+//         />
+//         <br />
+
+//         <label>Image URL:</label>
+//         <input
+//           type="text"
+//           name="imageURL"
+//           value={student ? student.imageURL : ''}
+//           onChange={handleChange}
+//         />
+//         <br />
+
+//         <label>GPA:</label>
+//         <input
+//           type="text"
+//           name="gpa"
+//           value={student ? student.gpa : ''}
+//           onChange={handleChange}
+//         />
+//         <br />
+        
+//         <Button variant="contained" color="primary" type="submit">
+//           Submit
+//         </Button>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default EditStudentView;
+
+
+
+
+
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -15,10 +163,6 @@ const useStyles = makeStyles(() => ({
     textAlign: 'left',
     textDecoration: 'none',
   },
-  customizeAppBar: {
-    backgroundColor: '#11153e',
-    shadows: ['none'],
-  },
   formTitle: {
     backgroundColor: '#c5c8d6',
     marginBottom: '15px',
@@ -35,8 +179,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const EnrollStudentView = (props) => {
-  const { handleChange, handleSubmit, presetCampusId } = props;
+const EnrollStudentView = ({ handleChange, handleSubmit, presetCampusId }) => {
   const [errors, setErrors] = useState({});
   const classes = useStyles();
 
@@ -63,7 +206,7 @@ const EnrollStudentView = (props) => {
     const formData = {
       firstname: e.target.firstname.value,
       lastname: e.target.lastname.value,
-      campusId: presetCampusId, // Use the preset campusId here
+      campusId: presetCampusId, // use the presetCampusId from EnrollStudentContainer
       email: e.target.email.value,
       imageURL: e.target.imageURL.value,
       gpa: e.target.gpa.value,
@@ -75,13 +218,13 @@ const EnrollStudentView = (props) => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      handleSubmit(formData); // Pass the entire formData to handleSubmit
+      handleSubmit(formData); // handles submit with the form data
     }
   };
 
   return (
     <div>
-      <h1>New Student</h1>
+      <h1>Enroll Student</h1>
       <div className={classes.root}>
         <div className={classes.formContainer}>
           <div className={classes.formTitle}>
@@ -113,8 +256,8 @@ const EnrollStudentView = (props) => {
             <input
               type="text"
               name="campusId"
-              value={presetCampusId} // Preset campusId
-              disabled // Make it uneditable
+              value={presetCampusId} // sets the preset campusId here
+              disabled // makes the campusId uneditable
             />
             <br />
             <br />

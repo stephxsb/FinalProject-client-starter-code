@@ -37,6 +37,7 @@ export const editCampus = (campus) => {
     payload: campus,
   };
 };
+
 //All Students
 export const fetchAllStudents = (students) => {
   return {

@@ -73,7 +73,6 @@ export const editCampusThunk = campus => async dispatch => {  // The THUNK
   }
 };
 
-
 // All Students
 // THUNK CREATOR:
 export const fetchAllStudentsThunk = () => async (dispatch) => {  // The THUNK

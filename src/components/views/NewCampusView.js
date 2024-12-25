@@ -7,6 +7,9 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+// import TextField from '@mui/material/TextField'
+import LargeTextField from '../css/LargeTextField'
+
 
 const useStyles = makeStyles(() => ({
   formContainer: {  
@@ -38,6 +41,7 @@ const useStyles = makeStyles(() => ({
     marginBottom: '10px',
     textAlign: 'left',
   },
+  
 }));
 
 const NewCampusView = (props) => {
@@ -107,10 +111,9 @@ const NewCampusView = (props) => {
             <br />
             <br />
 
-            <label style={{ color: '#11153e', fontWeight: 'bold' }}>Description: </label>
-            <input type="text" name="description" onChange={handleChange} />
-            <br />
-            <br />
+            <LargeTextField name="description" onChange={handleChange} />
+          <br />
+          <br />
 
             <label style={{ color: '#11153e', fontWeight: 'bold' }}>Image URL: </label>
             <input type="text" name="imageURL" onChange={handleChange} />

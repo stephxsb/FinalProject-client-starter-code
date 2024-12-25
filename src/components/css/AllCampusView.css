@@ -22,12 +22,6 @@
   border: 3px solid green;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
 
 img{
 	width: 200;
@@ -35,3 +29,25 @@ img{
 	border: 5px solid rgb(0, 2, 66);
 	border-radius: 100%;
 } */
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.campus-buttons{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.campus-buttons button{
+	border: none;
+	color: white;
+	background-color: black;
+  padding: 10px;
+  text-align: center;
+}

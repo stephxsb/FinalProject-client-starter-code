@@ -5,7 +5,9 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display a single campus and its students (if any).
 ================================================== */
 import { Link } from "react-router-dom";
+import "../css/AllCampusView.css";
 import "../css/CampusView.css";
+
 
 // Take in props data to construct the component
 const CampusView = (props) => {
@@ -16,7 +18,7 @@ const CampusView = (props) => {
 
     if (!props.campus.students.length) {
        return  <div>
-          <img
+          <img className="campusImage"
          src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
          alt="Campus"
          />
@@ -25,21 +27,27 @@ const CampusView = (props) => {
       <p>{campus.description}</p> 
       <p>There are no students.</p>
     <br></br> <br></br>
-    <Link to={`/campus/${campus.id}/edit`}>
-          <button>Edit Campus</button>
+      <div className= "center">
+<Link to={`/campus/${campus.id}/edit`}>
+          <button  className="campus-buttons">Edit Campus</button>
         </Link>
-        <br></br> <br></br>
+        
         <Link to={'/campuses'}>
-        <button onClick={() => deleteCampus(campus.id)}>
+        <button className="campus-buttons" onClick={() => deleteCampus(campus.id)}>
           Delete Campus
         </button>
       </Link>
+
+      <Link to={`/campus/${campus.id}/enrollstudent`}>
+  <button  className="campus-buttons">Enroll Student</button>
+</Link>
+</div>
     </div>;
      }
   return (
     <div>
     
-    <img
+    <img className="campusImage"
             src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
             alt="Campus"
           />
@@ -59,15 +67,21 @@ const CampusView = (props) => {
           </div>
         );
       })}
+      <div className= "center">
 <Link to={`/campus/${campus.id}/edit`}>
-          <button>Edit Campus</button>
+          <button  className="campus-buttons">Edit Campus</button>
         </Link>
-        <br></br> <br></br>
+        
         <Link to={'/campuses'}>
-        <button onClick={() => deleteCampus(campus.id)}>
+        <button className="campus-buttons" onClick={() => deleteCampus(campus.id)}>
           Delete Campus
         </button>
       </Link>
+
+      <Link to={`/campus/${campus.id}/enrollstudent`}>
+  <button  className="campus-buttons">Enroll Student</button>
+</Link>
+</div>
     </div>
   );
 };

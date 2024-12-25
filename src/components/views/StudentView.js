@@ -9,30 +9,36 @@ import "../css/StudentView.css";
 
 const StudentView = (props) => {
   const { student, deleteStudent } = props;
-  console.log(student);
-  // Render a single Student view
+
+  //  to fix loading errrors return if student is not available
+  if (!student) {
+    return <div>Loading...</div>; 
+  }
+//   // Render a single Student view
   return (
     <div className="container">
-      <img src={student.imageURL} alt="Default" />
+       <img className= "studentImage" src={student.imageURL} alt="Default" />
       <h1>{student.firstname + " " + student.lastname}</h1>
+
       <h3>
-        {student.campus ? (
-          <Link to={`/campus/${student.campus.id}`}>{student.campus.name}</Link>
-        ) : (
-          "Student is not associated with campus"
-        )}
+        {student.campus && student.campus.name
+          ? <Link to={`/campus/${student.campus.id}`}>
+          <h2>{student.campus.name}</h2>
+        </Link>
+          : "Student is not associated with campus"}
       </h3>
       <p>Email: {student.email}</p>
       <p>GPA: {student.gpa}</p>
 
-      <div className="student-buttons">
-        <Link to={"/students"}>
-          <button onClick={() => deleteStudent(student.id)}>
+      <div className="center">
+
+        <Link to="/students">
+          <button onClick={() => deleteStudent(student.id)} className="student-buttons">
             Delete Student
           </button>
         </Link>
         <Link to={`/student/${student.id}/edit`}>
-          <button>Edit Student</button>
+          <button  className="student-buttons">Edit Student</button>
         </Link>
       </div>
     </div>
@@ -40,4 +46,3 @@ const StudentView = (props) => {
 };
 
 export default StudentView;
-

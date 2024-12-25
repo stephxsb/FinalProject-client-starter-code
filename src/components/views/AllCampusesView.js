@@ -8,28 +8,30 @@ import React from 'react';
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "../css/AllCampusView.css";
-
+import "../css/CampusView.css";
 const AllCampusesView = (props) => {
   // const {campus, deleteCampus} = props;
   const {deleteCampus} = props;
-  // If there is no campus, display a message.
+  // if there is no campus, display a message.
   if (!props.allCampuses.length) {
     return <div>There are no campuses.
       <br></br> <br></br>
+      <div className= "center">
       <Link to={`/newcampus`}>
-        <button className="new-campus"> Add New Campus</button>
-      </Link> 
+        <button className="new-campus"> Add New Campus</button> 
+      </Link>   
+      </div>
     </div>;
-  }
+  } //and button to add a campus
 
-  // If there is at least one campus, render All Campuses view 
+  // if there is at least one campus, render All Campuses view 
   return (
     <div>
       <h1>All Campuses</h1>
 
       {props.allCampuses.map((campus) => (
         <div key={campus.id}>
-          <img
+          <img className= 'campusImage'
             src={campus.imageURL || 'https://zeta.creativecirclecdn.com/chief/original/20241008-134634-eaa-phpmf60Dp.jpg'}
             alt="Campus"
           />
@@ -39,15 +41,18 @@ const AllCampusesView = (props) => {
           <h4>campus id: {campus.id}</h4>
           <p>{campus.address}</p>
           <p>{campus.description}</p>
-          <button onClick={() => deleteCampus(campus.id)}>Delete</button>
+          <div className="center">
+          <button onClick={() => deleteCampus(campus.id)} className="campus-buttons">Delete Campus</button> 
+          </div>
           <hr/>
         </div>
       ))}
       <br/>
-
+      <div className= "center">
       <Link to={`/newcampus`}>
-        <button className="new-campus"> Add New Campus</button>
-      </Link> 
+        <button className="new-campus"> Add New Campus</button> 
+      </Link>   
+      </div>
       <br/><br/>
     </div>
   );
