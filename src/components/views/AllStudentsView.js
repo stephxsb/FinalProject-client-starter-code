@@ -5,6 +5,7 @@ The Views component is responsible for rendering web page with data provided by 
 It constructs a React component to display the all students view page.
 ================================================== */
 import { Link } from "react-router-dom";
+import React from "react";
 import "../css/AllStudentView.css";
 
 const AllStudentsView = (props) => {

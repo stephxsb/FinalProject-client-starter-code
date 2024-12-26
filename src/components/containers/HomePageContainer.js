@@ -6,6 +6,7 @@ passes data (if any) as props to the corresponding View component.
 If needed, it also defines the component's "connect" function.
 ================================================== */
 import Header from './Header';
+import React from "react";
 import HomePageView from '../views/HomePageView';
 
 // Render Home page view by the corresponding View component

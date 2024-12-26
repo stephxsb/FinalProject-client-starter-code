@@ -5,6 +5,7 @@ It contains the Header component to be displayed on every page.
 The header contains navigation links to every other page.
 ================================================== */
 // Import "material" library for building UI with React components
+import React from "react";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
