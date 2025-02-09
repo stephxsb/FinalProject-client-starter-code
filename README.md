@@ -1,7 +1,7 @@
 # client-starter-code
 
 This repository is the client (front-end) starter code for Final Project - Full-Stack CRUD Application.
-Link to our back-end code: [Server Side](https://github.com/stephxsb/Final-project-server)
+</br> Link to our back-end code: [Server Side](https://github.com/stephxsb/Final-project-server)
 
 #### Demo 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/iTsEKSANbjQ/0.jpg)](https://www.youtube.com/watch?v=iTsEKSANbjQ)
